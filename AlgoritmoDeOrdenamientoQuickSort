@@ -1,0 +1,85 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package algoritmodeordenamientoquicksort;
+
+/**
+ *
+ * @author yosoy
+ */
+public class AlgoritmoDeOrdenamientoQuickSort{
+    
+        public void mostrarArreglo(int[] arreglo){
+        int k;
+        for (k = 0; k < arreglo.length; k++) {
+            System.out.print("[" + arreglo[k] + "]");
+        }
+        System.out.println();
+    }
+    //** Metodo Quick Sort**
+    public void quicksort(int[] arreglo, int first, int last){
+    //** primero y ultimo arreglo para tomar como referencia**
+        int i, j, jumper, aux;
+        //** Jumper es el importante, por decirlo asi xD **
+        i = first;
+        j = last;
+        //** Inicializamos cada variable dandole un vario predeterminado
+        
+        jumper = arreglo[(first + last)/2];
+        //** Vamos a localizar al jumper **
+        System.out.println("El que usamos como referencia para jumper es" + jumper);
+        //** vamos a partir a nuestro arreglo en dos como pivote **
+        do{
+            //** para incrementar el contador i **
+            while(arreglo[i] < jumper){
+                i++;
+                
+            }
+            //** para disminur a j en comparacion al jumper**
+            while(arreglo[j] > jumper){
+                j--;
+            }
+            //** Hacemos intercambio de variables
+            if (i <= j) {
+                //** vamos a intercambiarlos con la variable aux **
+                aux = arreglo[i];
+                arreglo[i] = arreglo[j];
+                arreglo[j] = aux;
+                i++;
+                j--;
+            }
+        }
+        while(i <= j);
+        //**Utilizamos recursividad **
+        if (first < j){
+            quicksort(arreglo, first, j);
+        }
+        if (i < last){
+            quicksort(arreglo, i, last);
+            
+            //** hace la sub division en sub listas ** 
+        }
+        mostrarArreglo(arreglo);
+}
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args){
+        AlgoritmoDeOrdenamientoQuickSort ordena = new AlgoritmoDeOrdenamientoQuickSort();
+        //** creamos nuevo vector **
+        int vect[] = {645, 78, 132, 546, 94, 3, 1, 5, 3512, 9999, 10000};
+        System.out.println("Arreglo ordiginal");
+        ordena.mostrarArreglo(vect);
+        System.out.println("Arreglo ordenado con Quick Sort");
+        //** Estamos recibiendo 3 parametros entonces para que **
+        //** el segundo parametro lo iniciamos en cero y el tercero **
+        //** lo ponemos igual a la medida y o tamaño menos uno **
+        //** Mediante el .length-1 **
+        ordena.quicksort(vect, 0, vect.length-1);
+        // TODO code application logic here
+    }
+    
+}
