@@ -1,0 +1,43 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package binario;
+import java.util.Scanner;
+import java.util.*;
+/**
+ *
+ * @author yosoy
+ */
+public class Binario {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        int x;
+        do {
+            System.out.println("Introduzca numero menor a cero:");
+            x = teclado.nextInt();
+        } while (x < 0);
+            System.out.println();
+            System.out.println("Binario: ");
+            decBin(x);
+            System.out.println();
+    }
+    public static void decBin(int x){
+        if (x < 2){
+            System.out.println(x);
+            return;
+        }
+        else{
+            decBin(x/2);
+            System.out.println(x % 2);
+            return;
+        }
+        // TODO code application logic here
+    }
+    
+}
